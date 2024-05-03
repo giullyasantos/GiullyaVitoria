@@ -1,0 +1,363 @@
+  @font-face {
+    font-family: "amandine", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "area-normal";
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .app {
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .navBar {
+    text-align: center;
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+    
+}
+
+.sidebar {
+    width: 150px;
+    position: fixed; /* Fixing the sidebar */
+    top: 40%; /* Adjust based on your navbar height */
+    height: auto; /* Adjust as needed */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+@media (max-width: 478px) {
+    .sidebar {
+        position: fixed; /* Fixing the sidebar */
+        flex-direction: row; /* Horizontal layout */
+        justify-content: center;
+        width: 100%; /* Full width */
+        top: 3.5rem; /* Adjust based on your navbar height */
+        height: auto; /* Adjust height */
+        padding: 0.5rem 0; /* Add padding */
+    }
+    
+    .sidebar .sidebarLine {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center;
+        width: 100%; 
+        height: auto;
+        margin-top: 3%;
+        gap: 5px;
+    }
+}
+
+  .sidebar .sidebarLine button  {
+    border: 1px solid var(--color);
+    height: 1vh;
+    width: 1vh;
+    transition: transform 0.3s ease;
+  }
+  
+  .sidebar .sidebarLine button:hover {
+    transform: rotate(45deg);
+  }
+  
+  .sidebar .sidebarLine button.active  {
+    transform: rotate(45deg) scale(0.95, 0.95);
+    background-color: var(--accent-color);
+    border: 1px solid var(--color);
+  }
+  
+  .section {
+    font-family: "amandine";
+    cursor: default;
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+  }
+  
+  #contact {
+    margin-bottom: 10rem;
+  }
+  
+  .app, .section {
+    transition: all 500ms ease, color 500ms ease;
+  }
+  
+  .lightMode  {
+    background-color: transparent;
+    --background-color: pink;
+    color: #42081B;
+    --color: #42081B;
+    --accent-color: #FF69B4;
+    --opposite: #FF69B4;
+  }
+  
+  .darkMode {
+    background-color: #175E54;
+    --background-color: #175E54;
+    color: pink;
+    --color: pink;
+    --accent-color: #42081B;
+    --opposite: #42081B;
+  }
+  
+  .sidebar button {
+    transition: color 0.3s ease;
+    display: block;
+    margin: 10px 0;
+    background-color: transparent;
+  }
+  
+  .footer {
+    font-family: "amandine";
+    letter-spacing: 1px;
+    text-align: center;   
+    padding: 1rem 0;           
+    bottom: 0;             
+    width: 100%;  
+  }
+  
+  .toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  .toggle:hover {
+    opacity: 50%;
+  }
+  
+  .input {
+    display: none;
+  }
+  
+  .icon {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+    transition: transform 500ms;
+  }
+  
+  .icon--moon {
+    transition-delay: 200ms;
+  }
+  
+  .icon--sun {
+    transform: scale(0);
+  }
+  
+  #switch:checked + .icon--moon {
+    transform: rotate(360deg) scale(0);
+  }
+  
+  #switch:checked ~ .icon--sun {
+    transition-delay: 200ms;
+    transform: scale(1) rotate(360deg);
+  }
+
+  #currentlyListening{
+    height: 100vh;
+    width: 100vh;
+    animation: rotate 20s linear infinite;
+    transition: 500ms ease;
+  }
+  
+  @keyframes rotate {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+  }
+
+  #home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #home h1{
+    font-size: 12.5vw;
+    color: var(--accent-color);
+  }
+
+  #home p{
+    font-size: 2vw;
+    
+  }
+  .description p{
+    font-family: "area-normal";
+    font-size: 15px;
+  }
+
+  .resume{
+    font-family: "area-normal";
+    font-size: 12.5px;
+  }
+
+  .photoSlider{
+    height: 250px;
+    position: absolute;
+    margin-top: 40vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+  
+  .slideTrack{
+    display: flex;
+    width: calc(250px * 18);
+    animation: scroll 40s linear infinite;
+  }
+  
+  .slideTrack:hover{
+    animation-play-state: paused;
+  }
+  
+  @keyframes scroll {
+    0%{
+      transform: translateX(0);
+    }
+    100%{
+      transform: translateX(calc(-250px * 9));
+    }
+  }
+  .slide{
+    position: relative;
+    height:200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+  
+  .slide img{
+    cursor: default;
+    width: 100%;
+    border-radius: 7px;
+    transition: opacity 400ms ease;
+  } 
+  
+  .slide:hover div{
+    opacity: 1;
+  }
+  
+  .slide:hover img{
+    opacity: 10%;
+  }
+  
+  .slide div {
+    position: absolute; 
+    display: flex;
+    justify-content: center;
+    top: 50%;      
+    left: 0;       
+    width: 100%;     
+    z-index: 2;     
+    opacity: 0;
+    transition: 400ms ease;
+  }
+  
+  #about button{
+    background-color: transparent;
+    color: var(--color);
+    border: none;
+  }
+  
+  .underlineAnimation {
+    display: inline-block;
+    position: relative;
+    color: var(--color);
+  }
+  
+  .underlineAnimation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color);
+    transform-origin: bottom right;
+    transition: transform 400ms ease;
+  }
+  
+  .underlineAnimation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+  #about .rightSide{
+    position: absolute;
+    top: 144vh;
+    margin-left: 0%;
+    max-width: 60%;
+  }
+  
+  #about .leftSide{
+    position: absolute;
+    top: 130vh;
+  }
+  
+  #about .top {
+     display: flex;
+     justify-content: center;
+  }
+  
+  #about h1{
+    font-size: 5vw;
+  }
+  
+  #about div{
+    font-size: 2.25vh;
+  }
+  
+  .spline {
+    margin-top: -100vh;
+    position: sticky;
+    height: 100vh;
+    object-fit: cover;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 0;
+    opacity: 30%;
+}
+ 
+.allContent{
+  z-index: 1;
+}
+
+@keyframes handwrite {
+  0% {
+      stroke-dashoffset: 3007;
+      fill: none;
+  }
+  100% {
+      stroke-dashoffset: 0;
+      fill: currentColor;
+  }    
+}
+
+#giullyaVitoria {
+  transition: 200ms ease;
+  stroke-dasharray: 3007;
+  animation: handwrite 17s linear forwards;
+}

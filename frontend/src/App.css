@@ -1,0 +1,8 @@
+.background {
+    width: 100vw; /* Adjust based on your layout */
+    height: 100vh; /* Adjust based on your layout */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 19; /* Ensures it doesn't block other content */
+}
